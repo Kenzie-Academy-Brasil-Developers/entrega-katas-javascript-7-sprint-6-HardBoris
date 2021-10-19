@@ -358,3 +358,53 @@ console.log(laranja.join(""));
 console.log(newJoin(morango, ""));
 console.log(numeros.join(" - "));
 console.log(newJoin(numeros, " - "));
+
+/****************************************************************************
+                                extras
+*****************************************************************************
+                                slice
+****************************************************************************/
+
+function newSlice(array = vacio, inicio = 0, final = array.length) {
+    let novoArray = [];
+    if (inicio > array.length) {
+        return novoArray;
+    }
+    if (inicio < 0 && final < 0) {
+        return novoArray;
+    }
+    if (inicio < 0) {
+        for (let i = final + inicio; i < final; i++) {
+            novoArray.push(array[i]);
+        }
+        return novoArray
+    }
+    if (final < 0) {
+        final = array.length + final;
+        for (let i = inicio; i < final; i++) {
+            novoArray.push(array[i]);
+        }
+        return novoArray
+    }
+    for (let i = inicio; i < final; i++) {
+        novoArray.push(array[i]);
+    }
+    return novoArray;
+}
+
+console.log("newSlice");
+console.log(numeros.slice());
+console.log(newSlice(numeros));
+console.log(numeros.slice(2));
+console.log(newSlice(numeros, 2));
+console.log(laranja.slice(2, 5));
+console.log(newSlice(laranja, 2, 5));
+console.log(laranja.slice(-2));
+console.log(newSlice(laranja, -2));
+console.log(laranja.slice(10));
+console.log(newSlice(laranja, 10));
+console.log(numeros.slice(2, -2));
+console.log(newSlice(numeros, 2, -2));
+console.log(numeros.slice(-2, -2));
+console.log(newSlice(numeros, -2, -2));
+
