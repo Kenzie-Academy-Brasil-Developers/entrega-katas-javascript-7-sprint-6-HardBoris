@@ -1,11 +1,11 @@
-const frutas = ["maçã", "laranja", "morango"];
-const laranja = ["l", "a", "r", "a", "n", "j", "a"];
-const morango = ["m", "o", "r", "a", "n", "g", "o"];
-const numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
-const numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
-const dobles = [4, 6, 8, 10, 12, 14, 16, 18];
-const impares = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
-const vacio = [];
+let frutas = ["maçã", "laranja", "morango"];
+let laranja = ["l", "a", "r", "a", "n", "j", "a"];
+let morango = ["m", "o", "r", "a", "n", "g", "o"];
+let numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
+let numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
+let dobles = [4, 6, 8, 10, 12, 14, 16, 18];
+let impares = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+let vacio = [];
 
 /****************************************************************************
                                     forEach
@@ -253,6 +253,35 @@ console.log(laranja.fill("8", 2, 5));
 console.log(newFill(morango, "8", 2, 5));
 
 /****************************************************************************
+                        recuperando las matrices
+****************************************************************************/
+
+frutas = ["maçã", "laranja", "morango"];
+laranja = ["l", "a", "r", "a", "n", "j", "a"];
+morango = ["m", "o", "r", "a", "n", "g", "o"];
+numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
+numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
+dobles = [4, 6, 8, 10, 12, 14, 16, 18];
+impares = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+vacio = [];
+
+/****************************************************************************
                                 includes
 ****************************************************************************/
 
+function newIncludes(array = vacio, busca, inicio = 0) {
+    for (let i = inicio; i < array.length; i++) {
+        if (busca === array[i]) {
+           return true 
+        }
+    }
+    return false;
+}
+
+console.log("newIncludes");
+console.log(laranja.includes("p"));
+console.log(newIncludes(morango, "p"));
+console.log(numeros.includes(2, 3));
+console.log(newIncludes(numeros, 7, 4));
+console.log(laranja.includes("a", 4));
+console.log(newIncludes(morango, "o", 4));
