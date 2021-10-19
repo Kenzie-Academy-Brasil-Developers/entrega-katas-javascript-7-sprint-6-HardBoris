@@ -131,6 +131,21 @@ let non = findBG(numeros01, nones);
 console.log(non);
 
 /****************************************************************************
-                                    find
+                                findIndex
 ****************************************************************************/
 
+function findIndexBG(array, callback) {
+    let respuesta;
+    for (let i = 0; i < array.length; i++) {
+        item = array[i];
+        if (callback(item) === true) {
+            return respuesta = i;
+        }
+    }
+}
+console.log("findIndexBG")
+let indiceOnce = findIndexBG(numeros01, primerPrimo);
+console.log(indiceOnce);
+
+let indiceNon = findIndexBG(numeros01, nones);
+console.log(indiceNon);
