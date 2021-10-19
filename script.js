@@ -1,4 +1,6 @@
 const frutas = ["maçã", "laranja", "morango"];
+const laranja = ["l", "a", "r", "a", "n", "j", "a"];
+const morango = ["m", "o", "r", "a", "n", "g", "o"];
 const numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
 const numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
 const dobles = [4, 6, 8, 10, 12, 14, 16, 18];
@@ -233,5 +235,24 @@ console.log(newEvery(dobles, pares));
 
 /****************************************************************************
                                 fill
+****************************************************************************/
+
+function newFill(array = vacio, troca, inicio = 0, final = array.length) {
+    for (let i = inicio; i < final; i++) {
+        array[i] = troca;
+    }
+    return array;
+}
+
+console.log("newFill");
+console.log(numeros.fill("*"));
+console.log(newFill(impares, "*"));
+console.log(numeros01.fill("*", 4));
+console.log(newFill(dobles, "*", 4));
+console.log(laranja.fill("8", 2, 5));
+console.log(newFill(morango, "8", 2, 5));
+
+/****************************************************************************
+                                includes
 ****************************************************************************/
 
