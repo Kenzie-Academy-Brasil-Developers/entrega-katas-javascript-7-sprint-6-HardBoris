@@ -1,4 +1,5 @@
 let frutas = ["maçã", "laranja", "morango"];
+let manzana = ["m", "a", "ç", "a"];
 let laranja = ["l", "a", "r", "a", "n", "j", "a"];
 let morango = ["m", "o", "r", "a", "n", "g", "o"];
 let numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
@@ -257,6 +258,7 @@ console.log(newFill(morango, "8", 2, 5));
 ****************************************************************************/
 
 frutas = ["maçã", "laranja", "morango"];
+manzana = ["m", "a", "ç", "a"];
 laranja = ["l", "a", "r", "a", "n", "j", "a"];
 morango = ["m", "o", "r", "a", "n", "g", "o"];
 numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
@@ -285,3 +287,74 @@ console.log(numeros.includes(2, 3));
 console.log(newIncludes(numeros, 7, 4));
 console.log(laranja.includes("a", 4));
 console.log(newIncludes(morango, "o", 4));
+
+/****************************************************************************
+                                indexOf
+****************************************************************************/
+
+function newIndexOf(array = vacio, busca, inicio = 0) {
+    for (let i = inicio; i < array.length; i++) {
+        if (busca === array[i]) {
+           return i 
+        }
+    }
+    return -1;
+}
+
+console.log("newIndexOf");
+console.log(laranja.indexOf("p"));
+console.log(newIndexOf(morango, "p"));
+console.log(numeros.indexOf(2, 3));
+console.log(newIndexOf(numeros, 7, 4));
+console.log(laranja.indexOf("a", 4));
+console.log(newIndexOf(morango, "o", 4));
+
+/****************************************************************************
+                                concat
+****************************************************************************/
+
+function newConcat(array = vacio, otro) {
+    let novoArray = [];
+    let long = array.length
+    let j = otro.length;
+    for (let i = 0; i < long + j; i++) {
+        if (i < long) {
+           novoArray[i] = array[i] 
+        } else if (typeof otro === "object") {
+            novoArray[i] = otro[i-long]
+        } else {
+            novoArray[i] = otro;
+        }
+    }
+    return novoArray;
+}
+
+console.log("newConcat");
+console.log(laranja.concat("s"));
+console.log(newConcat(morango, "s"));
+console.log(numeros.concat(manzana));
+console.log(newConcat(numeros, manzana));
+
+/****************************************************************************
+                                join
+****************************************************************************/
+
+function newJoin(array = vacio, separador) {
+    let novoString = "";
+    let long = array.length
+    for (let i = 0; i < long; i++) {
+        if (i >= 0 && i < long - 1) {
+            novoString += `${array[i]}${separador}`;
+        }
+        if (i === long - 1) {
+            novoString += `${array[i]}`;
+        }
+    }
+    return novoString;
+}
+
+console.log("newJoin");
+console.log(laranja.join(""));
+console.log(newJoin(morango, ""));
+console.log(numeros.join(" - "));
+console.log(newJoin(numeros, " - "));
