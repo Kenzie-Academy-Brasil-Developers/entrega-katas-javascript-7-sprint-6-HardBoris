@@ -1,5 +1,9 @@
-const fruits = ["maçã", "laranja", "morango"];
+const frutas = ["maçã", "laranja", "morango"];
 const numeros = [2, 3, 5, 7, 11, 12, 13, 14, 15];
+const numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
+const dobles = [4, 6, 8, 10, 12, 14, 16, 18];
+const impares = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+const vacio = [];
 
 /****************************************************************************
                                     forEach
@@ -13,25 +17,35 @@ function duplica(item) {
     console.log(item *= 2);
 }
 
-function forEachBG(array, callback) {
+function newForEach(array, callback) {
+    let respuesta;
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
-        callback(item, i);
+        respuesta = callback(item, i);
     }
+    return respuesta;
 }
-console.log("forEachBG")
-forEachBG(fruits, demo);
-forEachBG(numeros, duplica);
+console.log("newForEach")
+frutas.forEach(demo);
+newForEach(frutas, demo);
+console.log(frutas);
+numeros.forEach(duplica);
+newForEach(numeros, duplica);
+console.log(numeros);
 
 /****************************************************************************
                                     map
 ****************************************************************************/
 
-function duplos(item) {
-    return item *= 2;
+function triplos(item) {
+    return item *= 3;
 }
 
-function mapBG(array, callback) {
+function gosto(item) {
+    return "eu gosto de " + item;
+}
+
+function newMap(array, callback) {
     let novoArray = []
     for (let i = 0; i < array.length; i++) {
         item = array[i];
@@ -39,26 +53,26 @@ function mapBG(array, callback) {
     }
     return novoArray;
 }
-console.log("mapBG")
-let dobles = mapBG(numeros, duplos);
-console.log(dobles);
+
+console.log("newMap");
+console.log(numeros.map(triplos));
+console.log(newMap(numeros, triplos));
+console.log(numeros);
+console.log(frutas.map(gosto));
+console.log(newMap(frutas, gosto));
+console.log(frutas);
 
 /****************************************************************************
                                     filter
 ****************************************************************************/
 
 function pares(item) {
-    if (item % 2 === 0) {
-        return true;
-    }
-    return false;
+    return item % 2 === 0
+        
 }
 
 function nones(item) {
-    if(item % 2 !== 0){
-        return true;
-    }
-    return false;
+    return item % 2 !== 0
 }
 
 function primos(item) {
@@ -77,64 +91,52 @@ function primos(item) {
 }
   
 
-function filterBG(array, callback) {
+function newFilter(array, callback) {
     let novoArray = []
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
-        if (callback(item) === true) {
+        if (callback(item)) {
             novoArray.push(item);
         }
     }
     return novoArray;
 }
-console.log("filterBG")
-let even = filterBG(numeros, pares);
-console.log(even);
 
-let odd = filterBG(numeros, nones);
-console.log(odd);
-
-let primes = filterBG(numeros, primos);
-console.log(primes);
+console.log("newFilter");
+console.log(numeros.filter(pares));
+console.log(newFilter(numeros, pares));
+console.log(numeros.filter(nones));
+console.log(newFilter(numeros, nones));
+console.log(numeros.filter(primos));
+console.log(newFilter(numeros, primos));
+console.log(numeros);
 
 /****************************************************************************
                                     find
 ****************************************************************************/
 
-function primerPrimo(item) {
-    let start = 2;
-    while (start <= Math.sqrt(item)) {
-      if (item % start++ < 1) {
-        return false;
-      }
-    }
-    return item > 1;
-}
-
-function findBG(array, callback) {
+function newFind(array, callback) {
     let respuesta;
     for (let i = 0; i < array.length; i++) {
         item = array[i];
-        if (callback(item) === true) {
+        if (callback(item)) {
             return respuesta = item;
         }
     }
 }
 
-const numeros01 = [4, 6, 8, 9, 12, 14, 15, 29, 19, 21];
-
-console.log("findBG");
-let once = findBG(numeros01, primerPrimo);
-console.log(once);
-
-let non = findBG(numeros01, nones);
-console.log(non);
+console.log("newFind");
+console.log(numeros01.find(primos));
+console.log(newFind(numeros01, primos));
+console.log(numeros01.find(nones));
+console.log(newFind(numeros01, nones));
+console.log(numeros01);
 
 /****************************************************************************
                                 findIndex
 ****************************************************************************/
 
-function findIndexBG(array, callback) {
+function newFindIndex(array, callback) {
     let respuesta;
     for (let i = 0; i < array.length; i++) {
         item = array[i];
@@ -143,9 +145,93 @@ function findIndexBG(array, callback) {
         }
     }
 }
-console.log("findIndexBG")
-let indiceOnce = findIndexBG(numeros01, primerPrimo);
-console.log(indiceOnce);
 
-let indiceNon = findIndexBG(numeros01, nones);
-console.log(indiceNon);
+console.log("newFindIndex");
+console.log(numeros01.findIndex(primos));
+console.log(newFindIndex(numeros01, primos));
+console.log(numeros01.findIndex(nones));
+console.log(newFindIndex(numeros01, nones));
+console.log(numeros01[7]);
+console.log(numeros01[3]);
+console.log(numeros01);
+
+/****************************************************************************
+                                reduce
+****************************************************************************/
+
+function suma(a, b) {
+    return a + b;
+}
+
+function newReduce(array, callback) {
+    let respuesta;
+    let a = 0;
+    let b = 0;
+    for (let i = 0; i < array.length; i++) {
+        
+        b = array[i];
+        a += b
+        respuesta = callback(a, b);
+    }
+    return respuesta - b;
+}
+
+console.log("newReduce");
+console.log(numeros.reduce(suma));
+console.log(newReduce(numeros, suma));
+console.log(numeros);
+console.log(numeros01.reduce(suma));
+console.log(newReduce(numeros01, suma));
+console.log(numeros01);
+console.log(dobles.reduce(suma));
+console.log(newReduce(dobles, suma));
+console.log(dobles);
+
+/****************************************************************************
+                                some
+****************************************************************************/
+
+function newSome(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+        item = array[i];
+        if (callback(item)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+console.log("newSome");
+console.log(vacio.some(pares));
+console.log(newSome(vacio, pares));
+console.log(numeros01.some(nones));
+console.log(newSome(numeros01, nones));
+console.log(dobles.some(primos));
+console.log(newSome(dobles, primos));
+
+/****************************************************************************
+                                every
+****************************************************************************/
+
+function newEvery(array, callback) {
+    for (let i = 0; i < array.length; i++) {
+        item = array[i];
+        if (callback(item) === false) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log("newEvery");
+console.log(numeros.every(pares));
+console.log(newEvery(numeros, pares));
+console.log(impares.every(nones));
+console.log(newEvery(impares, nones));
+console.log(dobles.every(pares));
+console.log(newEvery(dobles, pares));
+
+/****************************************************************************
+                                fill
+****************************************************************************/
+
